@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.yq.dao">
+
+
+    <select id="findAll" resultType="tbRate">
+        select id,name,first_char firstChar from tb_brand
+    </select>
+
+    <insert id="insert" parameterType="tbRate">
+        insert tb_rate(id,transform,target,relevant,netnum)
+	values
+	(
+	#{id},#{transform},#{target},#{relevant},#{netnum}
+	)
+    </insert>
+
+    <select id="selectByParmaryKey" resultType="tbRate" parameterType="Long">
+        select id,transform,target,relevant from tb_rate where id=#{id}
+    </select>
+
+    <update id="updateByParmaryKey" parameterType="tbRate">
+         update tb_rate  set  id=#{id},transform=#{transform},target=#{target},relevant=#{relevant},#{netnum}
+    </update>
+
+    <delete id="deleteByParmaryKey" parameterType="Long">
+        delete from  tb_rate  where id=#{id}
+    </delete>
+
+</mapper>
+
+
+
